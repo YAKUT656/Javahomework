@@ -2,7 +2,7 @@
 // ==============================================
 
 
-package Seminars.Seminar1;
+package Seminar1;
 
 public class hw1_2 {
     public static void main(String[] args) {

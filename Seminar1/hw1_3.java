@@ -2,7 +2,7 @@
 // ====================================
 
 
-package Seminars.Seminar1;
+package Seminar1;
 import java.util.Scanner;
 
 public class hw1_3 {
