@@ -1,42 +1,35 @@
 package Seminar3;
 
-// 1. (Дополнительно) Реализовать алгоритм сортировки слиянием
+// 1. Пусть дан произвольный список целых чисел, удалить из него чётные числа.
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import java.util.Scanner;
 
 public class hw3_1 {
-    public class sortArray<T> {}
-
-    public static void quickSort(int[] sortArr, int low, int high) {
-        //завершить,если массив пуст или уже нечего делить
-        if (sortArr.length == 0 || low >= high) return;
-    
-        //выбираем опорный элемент
-        int middle = low + (high - low) / 2;
-        int border = sortArr[middle];
-    
-        //разделияем на подмассивы и меняем местами
-        int i = low, j = high;
-        while (i <= j) {
-            while (sortArr[i] < border) i++;
-            while (sortArr[j] > border) j--;
-            if (i <= j) {
-                int swap = sortArr[i];
-                sortArr[i] = sortArr[j];
-                sortArr[j] = swap;
-                i++;
-                j--;
+    public static void main(String[] args) throws Exception {
+        System.out.print("Введите длину списка N: ");
+        try (Scanner iScanner = new Scanner(System.in)) {
+            int N = iScanner.nextInt();
+            ArrayList<Integer> ar = new ArrayList<Integer>();
+            Random ran = new Random();
+            for (int i = 0; i < N; i++) {
+                int x = ran.nextInt(N);
+                ar.add(x);
             }
+            System.out.println("Произвольный список целых чисел: \n " + ar);
+
+            for (int i = ar.size() - 1; i >= 0; i--) {
+                int even = ar.get(i) % 2;
+                if (even == 0) {
+                    System.out.println("Четное число:" + ar.get(i));
+                    ar.remove(i);
+                }
+            }
+            Collections.sort(ar);
+            System.out.println("Список с удаленными четными числами: \n " + ar);
         }
-    
-        //рекурсия для сортировки левой и правой части
-        if (low < j) quickSort(sortArr, low, j);
-        if (high > i) quickSort(sortArr, i, high);
     }
-    
-    public static void main(String args[]) {
-        int[] sortArr = {12, 6, 4, 1, 15, 10};
-        quickSort(sortArr, 0, sortArr.length - 1);
-        for(int i = 0; i < sortArr.length; i++){
-            System.out.print(sortArr[i] + " ");
-        }
-    }
+
 }
